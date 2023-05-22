@@ -11,6 +11,11 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  overflow: hidden;
+
+  transition-delay: 1s;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 body.dark {
@@ -18,4 +23,75 @@ body.dark {
   --background-color: #333;
   --text-color: #fff;
   --button-text-color: #333;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.theme-toggle-button {
+  background-color: var(--accent-color);
+  color: var(--button-text-color);
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+  border: none;
+  outline: none;
+  transition: var(--transition-delay);
+  transform: scale(1);
+}
+
+.theme-toggle-button .bi {
+  margin-right: 0.5em;
+}
+
+.theme-toggle-button:hover,
+.theme-toggle-button:focus {
+  transform: scale(1.1);
+}
+
+.sun-moon-container {
+  --rotation: 0;
+  position: absolute;
+  top: 0;
+  /* pointer-events: none; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 200vmin;
+  transform: rotate(calc(var(--rotation) * 1deg));
+  transition: transform var(--transition-delay);
+}
+
+.bi-brightness-low-fill,
+.bi-moon-stars-fill {
+  position: absolute;
+  transition: opacity, color, var(--transition-delay);
+  color: var(--accent-color);
+  font-size: 2em;
+  /* width: 5em;
+  height: 5em; */
+}
+
+.bi-brightness-low-fill {
+  top: 5%;
+  opacity: 1;
+}
+
+.dark .bi-brightness-low-fill {
+  opacity: 0;
+}
+.bi-moon-stars-fill {
+  bottom: 5%;
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+.dark .bi-moon-stars-fill {
+  opacity: 1;
 }
